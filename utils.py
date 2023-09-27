@@ -73,10 +73,12 @@ def findFace(frame):
 
     else:
         # No faces detected, display "Reposition yourself" in red in the upper portion of the frame
-        text = "Reposition yourself"
+        text = "Reposition yourself, coordinates reset to ({rel_x:.2f}, {rel_y:.2f})"
         text_size, _ = cv2.getTextSize(text, cv2.FONT_HERSHEY_SIMPLEX, 0.5, 2)
         text_x = frame.shape[1] // 2 - text_size[0] // 2
         text_y = 30
         cv2.putText(frame, text, (text_x, text_y), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 2, cv2.LINE_AA)
+
+        coordinates = (0.0, 0.0)
 
     return frame, faces, coordinates  # Return coordinates along with the frame and faces
